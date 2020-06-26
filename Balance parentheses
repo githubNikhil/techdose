@@ -82,12 +82,8 @@ for(int i=0;i<s.length();i++)
 
 int main()
 {
-
-    int tt; cin>>tt;
-    while(tt--)
-    {
-     string s; cin>>s;
-     cout<<isBalanced(s)<<endl;   
-    }
-    return 0;
+     string s; cin>>s;           //taking input sting
+     cout<<isBalanced(s)<<endl;   //passing it to the method and printing the returned string
+ 
+ return 0;
 }
