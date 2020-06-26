@@ -1,0 +1,93 @@
+#include <bits/stdc++.h>
+#include<stack>
+using namespace std;
+
+string isBalanced(string s)
+{
+stack<char> st;        //declaring the stack st of char type
+
+for(int i=0;i<s.length();i++) 
+{
+    if(s[i]=='(' || s[i]=='{' || s[i]=='[' || s[i]=='<')       //traversing the string and pusing the open braces whenever found. 
+    {
+        st.push(s[i]);
+    }
+   else                                                     // if not open braces the in else part
+   {
+   	
+       if(s[i]==')')                                       // checking if cuurent char
+       {
+            char c=st.top();                               //checking if top of the stack is the opening pair of this bracket. if yes then pop the top of stack
+            if(c=='(')
+            {
+                st.pop();
+            }
+            else                                         //otherwise just return unbalanced and control returns to main.
+            {
+                return "Unbalanced";
+            }
+
+       }
+       else if(s[i]==']')
+       {
+            char c=st.top();
+            if(c=='[')
+            {
+                st.pop();
+            }
+            else
+            {
+                return "Unbalanced";
+            }   
+       }
+       else if(s[i]=='}')
+       {
+            char c=st.top();
+            if(c=='{')
+            {
+                st.pop();
+            }
+            else
+            {
+                return "Unbalanced";
+            }
+       }
+	   else if(s[i]=='>')
+       {
+            char c=st.top();
+            if(c=='<')
+            {
+                st.pop();
+            }
+            else
+            {
+                return "Unbalanced";
+            }
+       }   
+   }
+}
+
+    if(st.empty())                                      // if the pairs got matched then elemnets will be popped so at the end stack should be empty.
+    {
+        return "Balanced";
+    }
+    else                                              // if stack is not empty then return Unbalanced
+    {
+        return "Unbalanced";
+    }
+
+    return "Balanced";
+}
+
+
+int main()
+{
+
+    int tt; cin>>tt;
+    while(tt--)
+    {
+     string s; cin>>s;
+     cout<<isBalanced(s)<<endl;   
+    }
+    return 0;
+}
